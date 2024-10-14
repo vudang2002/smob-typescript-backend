@@ -1,6 +1,6 @@
-import { ESLint } from 'eslint';
+const { ESLint } = require('eslint');
 
-export default [
+module.exports = [
   {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
