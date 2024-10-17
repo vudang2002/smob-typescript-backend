@@ -12,7 +12,8 @@
     "format": "prettier --write './src/**/*.{js,ts}'",
     "docker:build": "docker-compose build",
     "docker:up": "docker-compose up",
-    "docker:down": "docker-compose down"
+    "docker:down": "docker-compose down",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
