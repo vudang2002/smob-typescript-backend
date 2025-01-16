@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import pkg, { PoolClient } from 'pg';
 import dotenv from 'dotenv';
 
@@ -33,7 +33,7 @@ pool.connect(
         console.log('Connected to the database:', result.rows);
       });
     }
-  }
+  },
 );
 
 app.listen(port, () => {
