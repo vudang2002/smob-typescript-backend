@@ -1,8 +1,10 @@
 import express, { Request, Response } from 'express';
-import { Pool, PoolClient } from 'pg';
+import pkg, { PoolClient } from 'pg';
 import dotenv from 'dotenv';
 
 dotenv.config();
+
+const { Pool } = pkg;
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -13,7 +15,7 @@ const pool = new Pool({
   host: process.env.PGHOST || 'localhost',
   database: process.env.PGDATABASE || 'wecommit',
   password: process.env.PGPASSWORD || '30112002',
-  port: parseInt(process.env.PGPORT || '5432', 10),
+  port: parseInt(process.env.PGPORT || '5433', 10),
 });
 
 // Test the database connection
@@ -30,19 +32,12 @@ pool.connect(
         }
         console.log('Connected to the database:', result.rows);
       });
-    } else {
-      console.error('Client is undefined');
-      release();
     }
-  },
+  }
 );
-
-app.use(express.json());
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, World!');
-});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+export default app;
